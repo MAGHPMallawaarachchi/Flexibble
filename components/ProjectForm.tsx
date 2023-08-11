@@ -1,12 +1,15 @@
 "use client"
 
-import { SessionInterface } from "@/common.types";
-import { ChangeEvent, useState } from "react";
 import Image from "next/image";
+import React, { ChangeEvent, FormEvent, useState } from "react";
+import { useRouter } from "next/navigation";
+
 import FormField from "./FormField";
-import { categoryFilters } from "@/constants";
-import CustomMenu from "./CustomMenu";
 import Button from "./Button";
+import CustomMenu from "./CustomMenu";
+import { categoryFilters } from "@/constants";
+import {createNewProject, fetchToken } from "@/lib/actions";
+import {FormState, ProjectInterface, SessionInterface } from "@/common.types";
 
 type Props = {
     type: string;
@@ -14,8 +17,26 @@ type Props = {
 }
 
 const ProjectForm = ({type, session}:Props) => {
-    const handleFormSubmit = (e: React.FormEvent) => {
+    const router = useRouter();
 
+    const handleFormSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+
+        setIsSubmitting(true)
+
+        const {token} = await fetchToken()
+
+        try{
+            if(type === "create"){
+                await createNewProject(form, session?.user?.id, token)
+
+                router.push("/")
+            }
+        }catch(error){
+            alert(`Failed to ${type === "create" ? "create" : "edit"} a project. Try again!`);
+        }finally{
+            setIsSubmitting(false);
+        }
     };
 
     const handleChangeImage = (e: ChangeEvent<HTMLInputElement>) => {
@@ -37,11 +58,11 @@ const ProjectForm = ({type, session}:Props) => {
         reader.onload = () => {
             const result = reader.result as string;
             handleStateChange('image', result);
-        }
+        };
     };
 
     const handleStateChange = (fieldName: string, value: string) => {
-        setForm((prevState)=>({...prevState, [fieldName]: value}))
+        setForm((prevState)=>({...prevState, [fieldName]: value}));
     };
 
     const [isSubmitting, setIsSubmitting] = useState(false);
