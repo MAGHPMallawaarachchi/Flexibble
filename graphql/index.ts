@@ -1,15 +1,19 @@
 export const createProjectMutation = `
-	mutation CreateProject($input: ProjectCreateInput!) {
+	mutation ProjectCreate($input: ProjectCreateInput!) {
 		projectCreate(input: $input) {
 			project {
-				id
-				title
-				description
-				createdBy {
-					email
-					name
-				}
-			}
+        id
+        title
+        description
+        image
+        liveSiteUrl
+        githubUrl
+        category
+        createdBy {
+          name
+          email
+        }
+      }
 		}
 	}
 `;

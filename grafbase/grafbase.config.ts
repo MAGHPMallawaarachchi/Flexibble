@@ -8,13 +8,13 @@ const User = g.model('User', {
   description:g.string().optional(),
   githubUrl:g.url().optional(),
   linkedinUrl:g.url().optional(),
-  projects:g.relation(()=>Projects).list().optional(),
+  projects:g.relation(()=>Project).list().optional(),
 }).auth((rules) => {
   rules.public().read()
 })
 
 // @ts-ignore
-const Projects = g.model('Projects', {
+const Project = g.model('Project', {
   title:g.string().length({min:3}),
   description:g.string(),
   image:g.url(),
