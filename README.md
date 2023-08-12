@@ -1,12 +1,12 @@
 # Flexibble - A Dribbble Clone
 
-Welcome to Flexibble, a full-stack project that aims to replicate the core features of Dribbble, the world's leading community for creatives. With Flexibble, you can explore, share, and showcase your creative work, connect with fellow artists, and potentially even find opportunities to collaborate or get hired. This project is built using Next.js, TypeScript, React, Grafbase, and Cloudinary, combining powerful technologies to deliver a seamless and engaging user experience. Please note that, as of now, Flexibble is an ongoing project and not all the functionalities of the final Dribbble clone are implemented yet.
+Welcome to Flexibble, a full-stack project that aims to replicate the core features of Dribbble, the world's leading community for creatives. With Flexibble, you can explore, share, and showcase your creative work, connect with fellow artists, and potentially find opportunities to collaborate or get hired. This project is built using Next.js, TypeScript, Grafbase, and Cloudinary, combining powerful technologies to deliver a seamless and engaging user experience. Please note that, as of now, Flexibble is an ongoing project and not all the functionalities of the final Dribbble clone have been implemented yet.
 
 **Visit the live website**: [Flexibble Live](https://flexibble-gamma.vercel.app/)
 
 ## Features
 
-- **User Authentication:** Register, log in, and manage your account securely.
+- **User Authentication:** Register, log in and manage your account securely.
 - **Browse Projects:** Discover a wide range of creative work posted by other users.
 - **Upload Projects:** Share your own masterpieces with the world using Cloudinary integration.
 - **Profiles and Portfolios:** Create and personalize your developer profile and portfolio.
